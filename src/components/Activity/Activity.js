@@ -1,7 +1,10 @@
 export default function Activity({ activity }) {
   return (
     <li>
-      {activity.name} {activity.isForGoodWeather}
+      <span>
+        {activity.name} {activity.isForGoodWeather}
+      </span>
+      {/* <span>{activity.isForGoodWeather ? "Good weather" : "Bad weather"}</span> */}
     </li>
   );
 }
