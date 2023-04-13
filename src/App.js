@@ -11,10 +11,13 @@ function App() {
   const [activities, setActivities] = useLocalStorageState([], {
     defaultValue: [],
   });
-  const [filter, setFilter] = useState("");
+
   function handleAddActivity(newActivity) {
     setActivities([...activities, { id: uid(), ...newActivity }]);
     console.log(activities);
+  }
+  function handleDeleteActivity(id) {
+    setActivities(activities.filter((activity) => activity.id !== id));
   }
   const goodWeatherActivities = activities.filter(
     (activity) => activity.isForGoodWeather
@@ -28,10 +31,20 @@ function App() {
       <ul>
         {isGoodWeather
           ? goodWeatherActivities.map((activity) => (
-              <Activity key={activity.id} activity={activity} />
+              <Activity
+                key={activity.id}
+                activity={activity}
+                id={activity.id}
+                onDeleteActivity={handleDeleteActivity}
+              />
             ))
           : badWeatherActivities.map((activity) => (
-              <Activity key={activity.id} activity={activity} />
+              <Activity
+                key={activity.id}
+                activity={activity}
+                id={activity.id}
+                onDeleteActivity={handleDeleteActivity}
+              />
             ))}
       </ul>
       <Form onAddActivity={handleAddActivity} />
