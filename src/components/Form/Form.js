@@ -6,13 +6,16 @@ export default function Form({ onAddActivity }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    setName("");
-    setIsForGoodWeather(false);
+    // setName("");
+    // setIsForGoodWeather(false);
     const newActivity = { name, isForGoodWeather };
     onAddActivity(newActivity);
     event.target.reset();
     document.querySelector('input[type="text"]').focus();
   }
+  const handleWeatherCheckboxChange = (event) => {
+    setIsForGoodWeather(event.target.checked);
+  };
   return (
     <form onSubmit={handleSubmit}>
       <h2>Add new activity</h2>
@@ -28,7 +31,8 @@ export default function Form({ onAddActivity }) {
         good weather activity{" "}
         <input
           type="checkbox"
-          onChange={(event) => setIsForGoodWeather(event.target.checked)}
+          checked={isForGoodWeather}
+          onChange={handleWeatherCheckboxChange}
         ></input>
       </label>{" "}
       <br />
