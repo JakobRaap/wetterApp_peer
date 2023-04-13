@@ -1,16 +1,31 @@
 import { useEffect, useState } from "react";
 
-export default function FetchWwather() {
+export default function FetchWeather({ setWeather }) {
   const [weatherData, setWeatherData] = useState(null);
   useEffect(() => {
-    async function fetch() {
+    async function getData() {
       const response = await fetch(
         "https://example-apis.vercel.app/api/weather"
       );
       const data = await response.json();
       setWeatherData(data);
+      console.log(data);
+      setWeather(data.isGoodWeather);
     }
-  }, []);
-  fetch();
-  return <h1>{weatherData}</h1>;
+    getData();
+  }, [setWeather]);
+  return (
+    <div>
+      {weatherData === null ? (
+        <p>Loading...</p>
+      ) : (
+        <div>
+          <h1>
+            {weatherData.condition} {weatherData.temperature}°C
+          </h1>
+          <p>{weatherData.description}</p>
+        </div>
+      )}
+    </div>
+  );
 }

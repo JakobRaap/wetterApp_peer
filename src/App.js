@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
 import { uid } from "uid";
 import Activity from "./components/Activity/Activity";
-import FetchWwather from "./components/Fetch/FetchWeather";
+import FetchWeather from "./components/Fetch/FetchWeather";
 function App() {
   // const isGoodWeather = false;
   const [isGoodWeather, setIsGoodWeather] = useState(false);
@@ -24,7 +24,7 @@ function App() {
   );
   return (
     <div className="App">
-      <FetchWwather />
+      <FetchWeather setWeather={setIsGoodWeather} />
       <ul>
         {isGoodWeather
           ? goodWeatherActivities.map((activity) => (
