@@ -1,6 +1,6 @@
 import Form from "./components/Form/Form";
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
 import { uid } from "uid";
 import Activity from "./components/Activity/Activity";

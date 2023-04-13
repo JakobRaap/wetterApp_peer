@@ -19,16 +19,13 @@ export default function Form({ onAddActivity }) {
   return (
     <form onSubmit={handleSubmit}>
       <h2>Add new activity</h2>
+      <label>Name of activity : </label> <br />{" "}
+      <input
+        type="text"
+        onChange={(event) => setName(event.target.value)}
+      ></input>{" "}
       <label>
-        name of activity{" "}
-        <input
-          type="text"
-          onChange={(event) => setName(event.target.value)}
-        ></input>{" "}
-      </label>{" "}
-      <br />
-      <label>
-        good weather activity{" "}
+        Good weather activity :{" "}
         <input
           type="checkbox"
           checked={isForGoodWeather}
@@ -36,7 +33,9 @@ export default function Form({ onAddActivity }) {
         ></input>
       </label>{" "}
       <br />
-      <button type="submit">Submit</button>
+      <button type="submit" className="submit__button">
+        Submit
+      </button>
     </form>
   );
 }
